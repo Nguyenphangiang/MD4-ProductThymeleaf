@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Manager</title>
+</head>
+<body>
+<h1>Product detail</h1>
+<p>
+    <a th:href="@{/product}">Back to home page</a>
+</p>
+<form th:object="${product}" >
+<input type="hidden" th:field="*{id}">
+    <p>Name:</p><p th:text="*{name}"></p>
+    <p>Price:</p><p th:text="*{price}"></p>
+    <p>Description:</p><p th:text="*{description}"></p>
+    <p>Producer:</p><p th:text="*{producer}"></p>
+</form>
+</body>
+</html>

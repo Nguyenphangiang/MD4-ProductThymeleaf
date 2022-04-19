@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Manager</title>
+</head>
+<body>
+<h1>Products</h1>
+<p><a th:href="@{/product/create}">Create New Product</a></p>
+<form th:action="@{/product/search}">
+    <label for="search">
+        <input type="text" name="name" id="search">
+        <input type="submit" value="Search">
+    </label>
+</form>
+<br><br>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Producer</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td th:text="${product.getProducer()}"></td>
+            <td><a th:href="@{/product/{id}/edit(id=${product.getId()})}">Edit</a></td>
+            <td><a th:href="@{/product/{id}/delete(id=${product.getId()})}">Delete</a></td>
+            <td><a th:href="@{/product/{id}/detail(id=${product.getId()})}">Details</a></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+</body>
+</html>
